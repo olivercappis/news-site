@@ -1,15 +1,7 @@
 const GlobalLandingPage = () => {
   return (
     <div className="container text-center py-4">
-      <header>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-around mb-4">
-          <button className="btn btn-outline-primary">Home</button>
-          <button className="btn btn-outline-primary">My News</button>
-          <button className="btn btn-outline-primary">Settings</button>
-          <button className="btn btn-outline-primary">Search</button>
-          <button className="btn btn-outline-danger">Sign Out</button>
-        </nav>
-      </header>
+      
 
       <main>
         <h1>Global News</h1>
