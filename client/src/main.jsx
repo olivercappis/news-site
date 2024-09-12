@@ -8,7 +8,7 @@ import GlobalLandingPage from './pages/globalLandingPage.jsx';
 import Login from './pages/login.jsx';
 import MyNews from './pages/myNews.jsx';
 import Settings from './pages/settings.jsx';
-import Error from './components/error.jsx'; // Added import for error component
+import Error from './pages/error.jsx'; // Added import for error component
 
 const router = createBrowserRouter([
   {
