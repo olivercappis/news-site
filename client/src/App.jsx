@@ -1,11 +1,11 @@
-import NavTabs from './components/navbar.jsx'
+import NavBar from './components/navbar.jsx'
 import { Outlet } from 'react-router-dom'
 
 
 function App() {
   return (
     <>
-      <NavTabs />
+      <NavBar />
       <Outlet />
     </>
   )
