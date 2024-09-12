@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import GlobalLandingPage from './pages/globalLandingPage page.jsx'
+import GlobalLandingPage from './pages/globalLandingPage.jsx'
 import Login from './pages/login.jsx';
 import MyNews from './pages/myNews.jsx';
 import Settings from './pages/settings.jsx';
