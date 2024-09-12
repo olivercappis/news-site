@@ -4,7 +4,7 @@ const GlobalLandingPage = () => {
       
 
       <main>
-        <h1>Global News</h1>
+        <h1>Global YouNews</h1>
         <div className="row">
           <div className="col-md-4 p-2">
             <div className="bg-light p-4">Global News Widget 1</div>
