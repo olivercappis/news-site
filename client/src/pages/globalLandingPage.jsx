@@ -1,5 +1,3 @@
-import React from 'react';
-
 const GlobalLandingPage = () => {
   return (
     <div className="container text-center py-4">
