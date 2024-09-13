@@ -1,12 +1,17 @@
 import { useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
 
-export default function ThemeToggle() {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <button onClick={toggleTheme} className="btn btn-outline-primary">
-      {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+    <button
+      className="btn btn-outline-primary"
+      onClick={toggleTheme}
+    >
+      {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
     </button>
   );
-}
+};
+
+export default ThemeToggle;

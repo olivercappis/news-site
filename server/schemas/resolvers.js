@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { AuthenticationError } = require('apollo-server-express');
+const axios = require('axios');
+require('dotenv').config()
 
 const resolvers = {
     Query: {
@@ -73,9 +75,10 @@ const resolvers = {
         },
         getGeneralNews: async () => {
             try {
-                const apiUrl = `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.NEWS_API_KEY}&language=en&categories=general&published_after=2024-09-05`;
+                const apiUrl = `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.API_KEY1}&language=en&categories=general&published_after=2024-09-05`;
 
                 const response = await axios.get(apiUrl);
+                console.log(response)
 
                 return response.data.data;
             } catch (error) {

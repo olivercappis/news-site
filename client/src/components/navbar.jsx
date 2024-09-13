@@ -1,25 +1,14 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/images/YouNews_logo_transparent-removebg-preview.png';
-import ThemeToggle from './ThemeToggle';
-import { ThemeContext } from './ThemeContext';
+import { useContext } from 'react';
+import { ThemeContext } from './ThemeContext'; // Import the context
+import logo from '../assets/images/YouNews_logo_transparent-removebg-preview.png'; 
 
 export default function NavBar() {
-  const { isDarkMode } = useContext(ThemeContext);
-
-  // Define inline styles based on the theme
-  const navStyle = {
-    backgroundColor: isDarkMode ? '#333' : '#f8f9fa', // Dark mode: darker bg
-    color: isDarkMode ? '#f1f1f1' : '#000', // Dark mode: light text
-  };
-
-  const buttonStyle = {
-    backgroundColor: isDarkMode ? '#555' : '#007bff', // Dark mode: greyish buttons
-    color: isDarkMode ? '#f1f1f1' : '#fff', // Button text color
-  };
+  const { theme, toggleTheme } = useContext(ThemeContext); // Use context
 
   return (
-    <div className="container text-center py-4" style={{ backgroundColor: isDarkMode ? '#1a1a1a' : '#fff' }}>
+    <div className="container text-center py-4">
+      {/* Logo with inline styles */}
       <img
         src={logo}
         alt="Logo"
@@ -30,22 +19,24 @@ export default function NavBar() {
         }}
       />
       <header>
-        <nav className="navbar navbar-expand-lg justify-content-around mb-4" style={navStyle}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-around mb-4">
           <Link to="/">
-            <button className="btn" style={buttonStyle}>Home</button>
+            <button className="btn btn-outline-primary">Home</button>
           </Link>
           <Link to="/myNews">
-            <button className="btn" style={buttonStyle}>My News</button>
+            <button className="btn btn-outline-primary">My News</button>
           </Link>
-          <button className="btn" style={buttonStyle}>Search</button>
+          <button className="btn btn-outline-primary">Search</button>
           <Link to="/settings">
-            <button className="btn" style={buttonStyle}>Settings</button>
+            <button className="btn btn-outline-primary">Settings</button>
           </Link>
           <Link to="/login">
             <button className="btn btn-outline-danger">Sign Out</button>
           </Link>
-          {/* Add the ThemeToggle component */}
-          <ThemeToggle />
+          {/* Add Light/Dark mode toggle button */}
+          <button onClick={toggleTheme} className="btn btn-outline-primary">
+            {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+          </button>
         </nav>
       </header>
     </div>
