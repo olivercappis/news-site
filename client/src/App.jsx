@@ -1,14 +1,13 @@
-// App.jsx
-
-import NavBar from './components/navbar';
+import NavBar from './components/navbar.jsx';
 import { Outlet } from 'react-router-dom';
+import { ThemeProvider } from './components/ThemeContext'; // Import ThemeProvider
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <NavBar />
-      <Outlet /> {/* This renders the child route (like Login, Signup, etc.) */}
-    </>
+      <Outlet />
+    </ThemeProvider>
   );
 }
 
