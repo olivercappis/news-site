@@ -33,25 +33,56 @@ const resolvers = {
         },
         addPreference: async (_, { userId, name }) => {
             try {
-                // Find the user by ID
+
                 const user = await User.findById(userId);
                 if (!user) {
                     throw new Error('User not found');
                 }
 
-                // Add the new preference to the user's preferences array
                 user.preferences.push({ name });
 
-                // Save the updated user
                 await user.save();
 
-                return user; // Return the updated user
+                return user;
             } catch (error) {
                 console.error(error);
                 throw new Error('Error adding preference');
             }
         },
+        getNewsByPreferences: async (_, { userId }) => {
+            try {
 
+                const user = await User.findById(userId);
+
+                if (!user) {
+                    throw new Error('User not found');
+                }
+
+                const categories = user.preferences.map(pref => pref.name).join(',');
+
+                const apiUrl = `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.API_KEY1}&language=en&categories=${categories}&published_after=2024-09-05`;
+
+                const response = await axios.get(apiUrl);
+
+                return response.data.data;
+
+            } catch (error) {
+                console.error(error);
+                throw new Error('Error fetching news based on user preferences');
+            }
+        },
+        getGeneralNews: async () => {
+            try {
+                const apiUrl = `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.NEWS_API_KEY}&language=en&categories=general&published_after=2024-09-05`;
+
+                const response = await axios.get(apiUrl);
+
+                return response.data.data;
+            } catch (error) {
+                console.error(error);
+                throw new Error('Error fetching general news');
+            }
+        },
     },
 };
 

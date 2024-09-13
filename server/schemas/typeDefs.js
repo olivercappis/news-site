@@ -9,9 +9,19 @@ const typeDefs = `
     preferences: [Preference]
   }
 
+  type Article {
+    title: String
+    description: String
+    url: String
+    image_url: String
+    categories: [String]
+  }
+
   type Query {
     users: [User]
     user(email: String!): User
+    getNewsByPreferences(userId: ID!): [Article]
+    getGeneralNews: [Article]
   }
 
   type Mutation {
