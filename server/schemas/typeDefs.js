@@ -28,6 +28,8 @@ const typeDefs = `
     addUser(email: String!, password: String!): User
     login(email: String!, password: String!): Auth
     addPreference(userId: ID!, name: String!): User
+    getNewsByPreferences: [Article]
+    getGeneralNews: [Article]
   }
 
   type Auth {
