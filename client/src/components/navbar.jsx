@@ -1,7 +1,18 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/YouNews_logo_transparent-removebg-preview.png'; // Ensure the file path is correct
 
+import Auth from '../utils/auth';
+
 export default function NavBar() {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
+  const alertMsg = () => {
+    alert('You must be logged in to use this feature!');
+  }
+
   return (
     <div className="container text-center py-4">
       {/* Logo with inline styles */}
@@ -20,16 +31,41 @@ export default function NavBar() {
           <Link to="/">
             <button className="btn btn-outline-primary">Home</button>
           </Link>
-          <Link to="/myNews">
-            <button className="btn btn-outline-primary">My News</button>
-          </Link>
-          <button className="btn btn-outline-primary">Search</button>
-          <Link to="/settings">
-            <button className="btn btn-outline-primary">Settings</button>
-          </Link>
-          <Link to="/login">
-            <button className="btn btn-outline-danger">Sign Out</button>
-          </Link>
+          
+          {Auth.loggedIn() ? ( 
+            <>
+              <Link to="/myNews">
+                <button className="btn btn-outline-primary">My News</button>
+              </Link>
+
+              {/* Delete if not useable */}
+              <button className="btn btn-outline-primary">Search</button>
+
+              <Link to="/settings">
+                <button className="btn btn-outline-primary">Settings</button>
+              </Link>
+              <Link to="/login">
+                <button className="btn btn-outline-danger" onClick={logout}>Log Out</button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button className="btn btn-outline-primary" onClick={alertMsg}>My News</button>
+              </Link>
+
+              {/* Delete if not useable */}
+              <button className="btn btn-outline-primary">Search</button>
+
+              <Link to="/login">
+                <button className="btn btn-outline-primary" onClick={alertMsg}>Settings</button>
+              </Link>
+              <Link to="/login">
+                <button className="btn btn-outline-danger">Login / Signup</button>
+              </Link>
+            </>
+          )}
+          
         </nav>
       </header>
     </div>
