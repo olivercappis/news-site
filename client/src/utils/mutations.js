@@ -29,3 +29,16 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+// New mutation to add preferences for the user
+export const ADD_PREFERENCE = gql`
+  mutation addPreference($userId: ID!, $name: String!) {
+    addPreference(userId: $userId, name: $name) {
+      _id
+      email
+      preferences {
+        name
+      }
+    }
+  }
+`;
