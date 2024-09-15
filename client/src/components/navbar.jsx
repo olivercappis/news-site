@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { ThemeContext } from './ThemeContext'; // Import the context
 import logo from '../assets/images/YouNews_logo_transparent-removebg-preview.png'; 
 
+import Auth from '../utils/auth';
+
 export default function NavBar() {
   const { theme, toggleTheme } = useContext(ThemeContext); // Use context
 
