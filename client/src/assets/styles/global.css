@@ -1,37 +1,49 @@
-/* global.css */
-
-/* Light theme */
-body.light {
-    background-color: white;
-    color: black;
+.categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
   }
   
-  /* Dark theme */
-  body.dark {
-    background-color: black;
+  .category-button {
+    padding: 10px 15px;
+    border: 2px solid #007bff;
+    border-radius: 20px;
+    background-color: white;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+    margin: 5px;
+  }
+  
+/* Ensure specificity is strong enough to apply styles */
+.category-button.selected {
+    background-color: red !important; /* High-contrast background */
+    color: white !important; /* High-contrast text */
+    border-color: white !important; /* White border */
+  }
+  
+  /* Add hover state to the buttons for better visual feedback */
+  .category-button:hover {
+    background-color: #0056b3;
     color: white;
   }
   
-  /* Ensure other components or elements use these variables for proper theming */
-  .navbar {
-    background-color: var(--navbar-bg);
+  
+  .save-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
   
-  button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-  }
-  
-  /* Define theme variables for light and dark modes */
-  body.light {
-    --navbar-bg: #f8f9fa;
-    --button-bg: #e0e0e0;
-    --button-text: black;
-  }
-  
-  body.dark {
-    --navbar-bg: #333;
-    --button-bg: #555;
-    --button-text: white;
+  .save-button:hover {
+    background-color: #0056b3;
   }
   

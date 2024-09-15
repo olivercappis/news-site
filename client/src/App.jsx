@@ -1,18 +1,21 @@
-import NavBar from './components/navbar.jsx';
-import { Outlet } from 'react-router-dom';
-import { ThemeProvider } from './components/ThemeContext'; // Import the provider
+// App.jsx
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import NavBar from './components/navbar'; // Import NavBar
+import { Outlet } from 'react-router-dom'; // Outlet for rendering child routes
 
+// Set up Apollo Client
 const client = new ApolloClient({
-  uri: '/graphql',
+  uri: '/graphql', // Your GraphQL endpoint
   cache: new InMemoryCache(),
 });
 
 function App() {
   return (
-    <ThemeProvider>
+    <ApolloProvider client={client}>
+      {/* Include NavBar and Outlet for rendering different pages */}
       <NavBar />
-      <Outlet />
-    </ThemeProvider>
+      <Outlet /> {/* Renders child routes like Login, Signup, etc. */}
+    </ApolloProvider>
   );
 }
 

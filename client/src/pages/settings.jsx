@@ -1,74 +1,59 @@
-import { useState } from "react"; // Only import useState if needed
+import { useState } from "react";
 
-// Exporting the Settings component
+const categories = [
+  "General",
+  "Science",
+  "Sports",
+  "Business",
+  "Health",
+  "Entertainment",
+  "Tech",
+  "Politics",
+  "Food",
+  "Travel",
+];
+
 export default function Settings() {
-  const [selectedWidgets, setSelectedWidgets] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-  const handleAddWidget = () => {
-    // Logic to add widget (placeholder)
-    setSelectedWidgets([
-      ...selectedWidgets,
-      `Widget ${selectedWidgets.length + 1}`,
-    ]);
-  };
-
-  const handleRemoveWidget = (index) => {
-    // Logic to remove widget
-    const updatedWidgets = selectedWidgets.filter((_, i) => i !== index);
-    setSelectedWidgets(updatedWidgets);
+  const toggleCategory = (category) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((cat) => cat !== category));
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
   };
 
   return (
     <div className="container text-center py-4">
       <main>
-        <h1 className="mb-4">My Settings (add/remove widgets) </h1>
+        <h1 className="mb-4">Choose your interests</h1>
+        <p>Select the categories you're interested in:</p>
 
-        {/* Search bar placeholder */}
-        <div className="d-flex justify-content-end mb-3">
-          <button className="btn btn-light">Search</button>
-        </div>
-
-        {/* Widget list placeholder */}
-        <div className="row mb-4">
-          <div className="col-12">
-            <div
-              className="bg-light p-4"
-              style={{ height: "200px", borderRadius: "10px" }}
+        <div className="categories-container">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`category-button ${selectedCategories.includes(category) ? "selected" : ""}`}
+              onClick={() => toggleCategory(category)}
+              style={{
+                border: "2px solid black", 
+                margin: "5px",
+              }}
             >
-              <p className="mb-4">List of widgets to select</p>
-              <button className="btn btn-primary" onClick={handleAddWidget}>
-                Add Widget
-              </button>
-            </div>
-          </div>
+              {category}
+            </button>
+          ))}
         </div>
 
-        {/* Selected widgets */}
-        {selectedWidgets.length > 0 && (
-          <div className="row mb-4">
-            {selectedWidgets.map((widget, index) => (
-              <div className="col-12 mb-3" key={index}>
-                <div
-                  className="bg-light p-4"
-                  style={{ position: "relative", borderRadius: "10px" }}
-                >
-                  {widget}
-                  {/* Remove button */}
-                  <button
-                    className="btn btn-danger"
-                    style={{ position: "absolute", top: "10px", right: "10px" }}
-                    onClick={() => handleRemoveWidget(index)}
-                  >
-                    X
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+        <h3 className="mt-4">Selected Categories:</h3>
+        {selectedCategories.length > 0 ? (
+          <p>{selectedCategories.join(", ")}</p>
+        ) : (
+          <p>No categories selected yet</p>
         )}
 
-        {/* Save button */}
-        <button className="btn btn-light mt-3">Save</button>
+        <button className="save-button">Save Preferences</button>
       </main>
     </div>
   );
