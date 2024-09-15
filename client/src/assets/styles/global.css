@@ -6,30 +6,29 @@
     margin-top: 20px;
   }
   
-  .category-button {
-    padding: 10px 15px;
-    border: 2px solid #007bff;
-    border-radius: 20px;
-    background-color: white;
-    color: #007bff;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 16px;
+/* Basic button styling */
+.category-button {
+    border: 1px solid black;
+    padding: 10px 20px;
     margin: 5px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
   }
   
-/* Ensure specificity is strong enough to apply styles */
-.category-button.selected {
-    background-color: red !important; /* High-contrast background */
-    color: white !important; /* High-contrast text */
-    border-color: white !important; /* White border */
-  }
-  
-  /* Add hover state to the buttons for better visual feedback */
-  .category-button:hover {
-    background-color: #0056b3;
+  /* Selected state styling */
+  .category-button.selected {
+    background-color: #007bff; /* Bootstrap primary color */
     color: white;
+    border-color: #007bff;
   }
+  
+  /* Add hover effect for better UX */
+  .category-button:hover {
+    background-color: #f0f0f0;
+  }
+  
   
   
   .save-button {
