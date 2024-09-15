@@ -1,26 +1,37 @@
 /* global.css */
-:root {
-    --background-color-light: #ffffff;
-    --text-color-light: #000000;
-    --background-color-dark: #181818;
-    --text-color-dark: #f5f5f5;
+
+/* Light theme */
+body.light {
+    background-color: white;
+    color: black;
   }
   
-  /* Light mode */
-  body.light-mode {
-    background-color: var(--background-color-light);
-    color: var(--text-color-light);
+  /* Dark theme */
+  body.dark {
+    background-color: black;
+    color: white;
   }
   
-  /* Dark mode */
-  body.dark-mode {
-    background-color: var(--background-color-dark);
-    color: var(--text-color-dark);
+  /* Ensure other components or elements use these variables for proper theming */
+  .navbar {
+    background-color: var(--navbar-bg);
   }
   
-  /* Ensure all elements adjust to dark/light mode */
-  .container {
-    background-color: inherit;
-    color: inherit;
+  button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+  }
+  
+  /* Define theme variables for light and dark modes */
+  body.light {
+    --navbar-bg: #f8f9fa;
+    --button-bg: #e0e0e0;
+    --button-text: black;
+  }
+  
+  body.dark {
+    --navbar-bg: #333;
+    --button-bg: #555;
+    --button-text: white;
   }
   
