@@ -34,7 +34,7 @@ const resolvers = {
                     throw new Error('User not found');
                 }
 
-                const categories = user.preferences.map(pref => pref.name).join(',');
+                const categories = user.preferences.map(pref => pref.name.toLowerCase()).join(',');
                 console.log('-----------------')
                 console.log(categories)
                 console.log('-----------------')
