@@ -1,6 +1,12 @@
-const typeDefs = `
-  type Preference {
-    name: String!
+const { gql } = require('apollo-server-express');
+
+// Define your schema
+const typeDefs = gql`
+  type News {
+    title: String
+    description: String
+    url: String
+    image_url: String
   }
 
   type User {
@@ -10,19 +16,15 @@ const typeDefs = `
     preferences: [Preference]
   }
 
-  type Article {
-    title: String
-    description: String
-    url: String
-    image_url: String
-    categories: [String]
+  type Preference {
+    name: String
   }
 
   type Query {
     users: [User]
     user(email: String!): User
-    getNewsByPreferences(userId: ID!): [Article]
-    getGeneralNews: [Article]
+    getGeneralNews: [News]
+    searchNews(query: String!): [News] # Added searchNews here
   }
 
   type Mutation {
@@ -30,8 +32,6 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addPreference(userId: ID!, name: String!): User
     removePreference(userId: ID!, name: String!): User
-    getNewsByPreferences: [Article]
-    getGeneralNews: [Article]
   }
 
   type Auth {
