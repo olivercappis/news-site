@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import { useEffect } from 'react';
 import { GET_NEWS_BY_PREFERENCES, GET_GENERAL_NEWS } from '../utils/queries';
 import AuthService from '../utils/auth'; // Import AuthService to manage token and user ID
 
@@ -12,11 +13,24 @@ export default function MyNews() {
     }
 
     // Query for news based on user preferences
-    const { loading: loadingPreferences, error: errorPreferences, data: dataPreferences } = useQuery(GET_NEWS_BY_PREFERENCES, {
+    const { loading: loadingPreferences, error: errorPreferences, data: dataPreferences, refetch: refetchPreferences } = useQuery(GET_NEWS_BY_PREFERENCES, {
         variables: { userId },
     });
 
-    const { loading: loadingGeneral, error: errorGeneral, data: dataGeneral } = useQuery(GET_GENERAL_NEWS);
+    const { loading: loadingGeneral, error: errorGeneral, data: dataGeneral, refetch: refetchGeneral } = useQuery(GET_GENERAL_NEWS);
+
+    useEffect(() => {
+        const refetchData = async () => {
+            if (dataPreferences) {
+                await refetchPreferences(); // Refetch news by preferences
+            } else {
+                await refetchGeneral(); // Fallback to general news if no preferences
+            }
+        };
+
+        // Refetch news if preferences data changes or on initial load
+        refetchData();
+    }, [dataPreferences, refetchPreferences, refetchGeneral]);
 
     if (loadingPreferences || loadingGeneral) return <p>Loading...</p>;
     if (errorPreferences || errorGeneral) return <p>Error: {errorPreferences?.message || errorGeneral?.message}</p>;
@@ -37,6 +51,9 @@ export default function MyNews() {
                                 <div className="bg-light p-4" style={{ height: '150px' }}>
                                     <h3>{article.title}</h3>
                                     <p>{article.description}</p>
+                                    {article.image_url && (
+                                        <img src={article.image_url} alt={article.title} style={{ width: '100%' }} />
+                                    )}
                                     <a href={article.url}>Read more</a>
                                 </div>
                             </div>
