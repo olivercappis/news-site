@@ -21,3 +21,14 @@ export const GET_GENERAL_NEWS = gql`
     }
   }
 `;
+
+export const GET_NEWS_BY_PREFERENCES = gql`
+  query GetNewsByPreferences($userId: ID!) {
+    getNewsByPreferences(userId: $userId) {
+      title
+      description
+      url
+      image_url
+    }
+  }
+`;
