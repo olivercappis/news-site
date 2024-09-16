@@ -42,3 +42,15 @@ export const ADD_PREFERENCE = gql`
     }
   }
 `;
+
+export const REMOVE_PREFERENCE = gql`
+  mutation removePreference($userId: ID!, $name: String!) {
+    removePreference(userId: $userId, name: $name) {
+      _id
+      email
+      preferences {
+        name
+      }
+    }
+  }
+`;
