@@ -22,13 +22,18 @@ export const GET_GENERAL_NEWS = gql`
   }
 `;
 
+export const GET_NEWS_BY_PREFERENCES = gql`
+  query GetNewsByPreferences($userId: ID!) {
+    getNewsByPreferences(userId: $userId) {
+      `;
+
 export const GET_SEARCH_NEWS = gql`
-  query SearchNews($query: String!) {
-    searchNews(query: $query) {
-      title
-      description
-      url
-      image_url
-    }
-  }
-`;
+        query SearchNews($query: String!) {
+          searchNews(query: $query) {
+            title
+            description
+            url
+            image_url
+          }
+        }
+      `;
