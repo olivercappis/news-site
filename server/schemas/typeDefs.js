@@ -23,6 +23,7 @@ const typeDefs = `
     user(email: String!): User
     getNewsByPreferences(userId: ID!): [Article]
     getGeneralNews: [Article]
+    searchNews(searchTerm: String!): [Article]  # New search query
   }
 
   type Mutation {
@@ -30,8 +31,6 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addPreference(userId: ID!, name: String!): User
     removePreference(userId: ID!, name: String!): User
-    getNewsByPreferences: [Article]
-    getGeneralNews: [Article]
   }
 
   type Auth {

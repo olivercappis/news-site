@@ -37,10 +37,6 @@ export default function NavBar() {
               <Link to="/myNews">
                 <button className="btn btn-outline-primary">My News</button>
               </Link>
-
-              {/* Delete if not useable */}
-              <button className="btn btn-outline-primary">Search</button>
-
               <Link to="/settings">
                 <button className="btn btn-outline-primary">Settings</button>
               </Link>
@@ -54,7 +50,6 @@ export default function NavBar() {
                 <button className="btn btn-outline-primary" onClick={alertMsg}>My News</button>
               </Link>
 
-              {/* Delete if not useable */}
               <button className="btn btn-outline-primary">Search</button>
 
               <Link to="/login">
