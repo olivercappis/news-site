@@ -10,3 +10,14 @@ export const QUERY_USER = gql`
         }
     }
 `;
+
+export const GET_GENERAL_NEWS = gql`
+  query GetGeneralNews {
+    getGeneralNews {
+      title
+      description
+      url
+      image_url
+    }
+  }
+`;
