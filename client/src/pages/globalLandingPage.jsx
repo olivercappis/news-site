@@ -1,31 +1,5 @@
-// const GlobalLandingPage = () => {
-//   return (
-//     <div className="container text-center py-4">
-
-
-//       <main>
-//         <h1>Global YouNews</h1>
-//         <div className="row">
-//           <div className="col-md-4 p-2">
-//             <div className="bg-light p-4">Global News Widget 1</div>
-//           </div>
-//           <div className="col-md-4 p-2">
-//             <div className="bg-light p-4">Widget 2</div>
-//           </div>
-//           <div className="col-md-4 p-2">
-//             <div className="bg-light p-4">Widget 3</div>
-//           </div>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default GlobalLandingPage;
-
-
 import { useQuery } from '@apollo/client';
-import { GET_GENERAL_NEWS } from '../utils/queries';  // Adjust path as necessary
+import { GET_GENERAL_NEWS } from '../utils/queries';
 
 const GlobalLandingPage = () => {
   const { loading, error, data } = useQuery(GET_GENERAL_NEWS);
