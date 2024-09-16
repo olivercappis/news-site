@@ -16,7 +16,7 @@ const resolvers = {
     Mutation: {
         addUser: async (parent, { email, password }) => {
             const user = await User.create({ email, password });
-            const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '6h' });
+            const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '6h' });
             return { token, user };
         },
         login: async (parent, { email, password }) => {
@@ -30,25 +30,43 @@ const resolvers = {
                 throw new AuthenticationError('Incorrect password');
             }
 
-            const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '6h' });
+            const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '6h' });
             return { token, user };
         },
         addPreference: async (_, { userId, name }) => {
-            try {
-
+             try {
                 const user = await User.findById(userId);
                 if (!user) {
                     throw new Error('User not found');
                 }
 
-                user.preferences.push({ name });
+                // Check if the preference already exists
+                if (!user.preferences.some(pref => pref.name === name)) {
+                    user.preferences.push({ name });
+                }
 
                 await user.save();
-
-                return user;
+                return user; // Return the updated user with the new preference
             } catch (error) {
                 console.error(error);
                 throw new Error('Error adding preference');
+            }
+        },
+        removePreference: async (_, { userId, name }) => {
+            try {
+                const user = await User.findById(userId);
+                if (!user) {
+                    throw new Error('User not found');
+                }
+
+                // Remove the preference
+                user.preferences = user.preferences.filter(pref => pref.name !== name);
+
+                await user.save();
+                return user; // Return the updated user with the removed preference
+            } catch (error) {
+                console.error(error);
+                throw new Error('Error removing preference');
             }
         },
         getNewsByPreferences: async (_, { userId }) => {
