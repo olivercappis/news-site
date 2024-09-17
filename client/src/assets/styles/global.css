@@ -54,6 +54,14 @@
   transform: translateY(-2px) !important;
 }
 
+.col-md-4 {
+  min-height: 500px !important; /* Adjust as needed to extend the height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Ensure the news-widget also has enough space for content */
 .news-widget {
   background-color: #f0f0f0 !important;
   color: black !important;
@@ -66,15 +74,51 @@
   justify-content: flex-start !important;
   align-items: stretch !important;
   padding: 20px !important;
-  min-height: 400px !important;
+  min-height: 450px !important; /* Ensure widget has more height */
 }
 
-.news-widget:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+/* Ensure the image inside fits and remains properly aligned */
+.news-widget img {
+  border-radius: 5px !important;
+  max-height: 150px !important;
+  object-fit: cover !important;
+  margin-bottom: 10px !important;
 }
 
-.news-widget .read-more-link {
+.news-widget h5 {
+  font-size: 1.5rem !important;  /* Larger title size */
+  margin-bottom: 10px !important;  /* Adds space between title and text */
+}
+
+.news-widget p {
+  flex-grow: 1 !important;  /* Ensures paragraph takes available space */
+  margin-bottom: 10px !important;  /* Space between paragraph and link */
+}
+
+.read-more-link {
+  align-self: flex-end !important;
+  margin-top: auto !important;
+  color: #007bff !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+}
+
+.bg-light.p-4 {
+  min-height: 450px !important; /* Adjust the minimum height to accommodate all content */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+/* Adjust the image container inside the news-widget */
+.bg-light.p-4 img {
+  max-height: 150px !important; /* Adjust the image height */
+  object-fit: cover !important;
+  margin-bottom: 10px !important;
+}
+
+/* Ensure the "Read More" link stays at the bottom */
+.bg-light.p-4 .read-more-link {
   align-self: flex-end !important;
   margin-top: auto !important;
   color: #007bff !important;
@@ -85,12 +129,6 @@
 
 .read-more-link:hover {
   text-decoration: underline !important;
-}
-
-.news-widget img {
-  border-radius: 5px !important;
-  max-height: 200px !important;
-  object-fit: cover !important;
 }
 
 body {
@@ -143,3 +181,37 @@ h1 {
     margin-bottom: 10px !important;
   }
 }
+
+/* Category Button Styling */
+.category-button {
+  background-color: #00b7ff;  /* Default background */
+  color: white;  /* Text color */
+  border: none;
+  border-radius: 50px;  /* Round shape */
+  padding: 10px 20px;  /* Size of the buttons */
+  margin: 10px;  /* Space between buttons */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth transition */
+}
+
+/* Change background when selected */
+.category-button.selected {
+  background-color: #0008ff;  /* Highlight when selected */
+  color: white;
+  transform: translateY(-3px);  /* Slight lift effect */
+}
+
+/* Hover effect */
+.category-button:hover {
+  background-color: #ffffff;  /* Darker blue on hover */
+  color: black;
+  transform: translateY(-3px);  /* Slight lift effect */
+}
+
+/* Optional: Add disabled state (if needed) */
+.category-button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
