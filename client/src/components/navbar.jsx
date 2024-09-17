@@ -53,7 +53,8 @@ export default function NavBar() {
                   <button className="btn btn-outline-primary" onClick={alertMsg}>My News</button>
                 </Link>
 
-                <button className="btn btn-outline-primary">Search</button>
+                {/* Fix for the Search button - Hides or adds functionality */}
+                <button className="btn btn-outline-primary" onClick={alertMsg}>Search</button>
 
                 <Link className="nav-item nav-link" to="/login">
                   <button className="btn btn-outline-primary" onClick={alertMsg}>Settings</button>
