@@ -4,13 +4,13 @@ import { GET_GENERAL_NEWS, SEARCH_NEWS } from '../utils/queries';
 
 const GlobalLandingPage = () => {
   const { loading, error, data } = useQuery(GET_GENERAL_NEWS);
-  const [searchTerm, setSearchTerm] = useState(''); // State for search input
-  const [searchResults, setSearchResults] = useState(null); // State for search results
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState(null);
 
   // Lazy query for search functionality
   const [searchNews, { loading: searchLoading, error: searchError }] = useLazyQuery(SEARCH_NEWS, {
     onCompleted: (data) => {
-      setSearchResults(data.searchNews); // Set the search results when the query completes
+      setSearchResults(data.searchNews); // Update search results when query completes
     },
   });
 

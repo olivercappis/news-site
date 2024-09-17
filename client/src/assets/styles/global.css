@@ -184,32 +184,31 @@ h1 {
 
 /* Category Button Styling */
 .category-button {
-  background-color: #00b7ff;  /* Default background */
-  color: white;  /* Text color */
+  background-color: #00b7ff;
+  color: white;
   border: none;
-  border-radius: 50px;  /* Round shape */
-  padding: 10px 20px;  /* Size of the buttons */
-  margin: 10px;  /* Space between buttons */
+  border-radius: 50px;  
+  padding: 10px 20px; 
+  margin: 10px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth transition */
+  transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 /* Change background when selected */
 .category-button.selected {
-  background-color: #0008ff;  /* Highlight when selected */
+  background-color: #0008ff; 
   color: white;
-  transform: translateY(-3px);  /* Slight lift effect */
+  transform: translateY(-3px);
 }
 
 /* Hover effect */
 .category-button:hover {
-  background-color: #ffffff;  /* Darker blue on hover */
-  color: black;
-  transform: translateY(-3px);  /* Slight lift effect */
+  background-color: #ffffff; 
+  transform: translateY(-3px); 
 }
 
-/* Optional: Add disabled state (if needed) */
+
 .category-button:disabled {
   background-color: grey;
   cursor: not-allowed;
