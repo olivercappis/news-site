@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/YouNews_logo_transparent-removebg-preview.png'; // Ensure the file path is correct
-
 import Auth from '../utils/auth';
 
 export default function NavBar() {
@@ -14,58 +13,58 @@ export default function NavBar() {
   }
 
   return (
-    <div className="container text-center py-4">
-      {/* Logo with inline styles */}
-      <img
-        src={logo}
-        alt="Logo"
-        style={{
-          width: '200px', // Set the width to what you need
-          background: 'none', // Ensure no background color or pattern is applied
-          border: 'none', // Remove border if not needed
-        }}
-      />
+    <div className="container py-4">
+      {/* Logo centered and resized */}
+      <div className="text-center mb-4">
+        <img
+          src={logo}
+          alt="Logo"
+          style={{
+            width: '150px',  // 25% smaller (adjust from original size)
+          }}
+        />
+      </div>
+      
       {/* Header Navigation */}
       <header>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-around mb-4">
-          <Link to="/">
-            <button className="btn btn-outline-primary">Home</button>
-          </Link>
-          
-          {Auth.loggedIn() ? ( 
-            <>
-              <Link to="/myNews">
-                <button className="btn btn-outline-primary">My News</button>
-              </Link>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center mb-4">
+          <div className="navbar-nav d-flex justify-content-between" style={{ width: '100%', maxWidth: '600px' }}>
+            <Link className="nav-item nav-link" to="/">
+              <button className="btn btn-outline-primary">Home</button>
+            </Link>
+            
+            {Auth.loggedIn() ? ( 
+              <>
+                <Link className="nav-item nav-link" to="/myNews">
+                  <button className="btn btn-outline-primary">My News</button>
+                </Link>
 
-              {/* Delete if not useable */}
-              <button className="btn btn-outline-primary">Search</button>
+                <Link className="nav-item nav-link" to="/settings">
+                  <button className="btn btn-outline-primary">Settings</button>
+                </Link>
 
-              <Link to="/settings">
-                <button className="btn btn-outline-primary">Settings</button>
-              </Link>
-              <Link to="/login">
-                <button className="btn btn-outline-danger" onClick={logout}>Log Out</button>
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link to="/login">
-                <button className="btn btn-outline-primary" onClick={alertMsg}>My News</button>
-              </Link>
+                <Link className="nav-item nav-link" to="/login">
+                  <button className="btn btn-outline-danger" onClick={logout}>Log Out</button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link className="nav-item nav-link" to="/login">
+                  <button className="btn btn-outline-primary" onClick={alertMsg}>My News</button>
+                </Link>
 
-              {/* Delete if not useable */}
-              <button className="btn btn-outline-primary">Search</button>
+                <button className="btn btn-outline-primary">Search</button>
 
-              <Link to="/login">
-                <button className="btn btn-outline-primary" onClick={alertMsg}>Settings</button>
-              </Link>
-              <Link to="/login">
-                <button className="btn btn-outline-danger">Login / Signup</button>
-              </Link>
-            </>
-          )}
-          
+                <Link className="nav-item nav-link" to="/login">
+                  <button className="btn btn-outline-primary" onClick={alertMsg}>Settings</button>
+                </Link>
+
+                <Link className="nav-item nav-link" to="/login">
+                  <button className="btn btn-outline-danger">Login / Signup</button>
+                </Link>
+              </>
+            )}
+          </div>
         </nav>
       </header>
     </div>

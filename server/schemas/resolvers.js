@@ -15,10 +15,8 @@ const resolvers = {
         getGeneralNews: async () => {
             try {
                 const apiUrl = `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.API_KEY1}&language=en&categories=general&published_after=2024-09-05`;
-
                 const response = await axios.get(apiUrl);
-                console.log(response)
-
+                console.log(response);
                 return response.data.data;
             } catch (error) {
                 console.error(error);
@@ -27,7 +25,6 @@ const resolvers = {
         },
         getNewsByPreferences: async (_, { userId }) => {
             try {
-
                 const user = await User.findById(userId);
 
                 if (!user) {
@@ -35,9 +32,9 @@ const resolvers = {
                 }
 
                 const categories = user.preferences.map(pref => pref.name.toLowerCase()).join(',');
-                console.log('-----------------')
-                console.log(categories)
-                console.log('-----------------')
+                console.log('-----------------');
+                console.log(categories);
+                console.log('-----------------');
 
                 const apiUrl = `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.API_KEY1}&language=en&categories=${categories}&published_after=2024-09-05`;
 
@@ -48,6 +45,18 @@ const resolvers = {
             } catch (error) {
                 console.error(error);
                 throw new Error('Error fetching news based on user preferences');
+            }
+        },
+
+        // Added new searchNews resolver
+        searchNews: async (_, { searchTerm }) => {
+            try {
+                const apiUrl = `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.API_KEY1}&language=en&search=${searchTerm}`;
+                const response = await axios.get(apiUrl);
+                return response.data.data;
+            } catch (error) {
+                console.error(error);
+                throw new Error('Error fetching search results');
             }
         },
     },
@@ -107,6 +116,7 @@ const resolvers = {
                 throw new Error('Error removing preference');
             }
         },
+        // The following commented out code is left untouched as per request.
         // getNewsByPreferences: async (_, { userId }) => {
         //     try {
 

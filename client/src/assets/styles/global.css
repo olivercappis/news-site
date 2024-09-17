@@ -1,48 +1,145 @@
-.categories-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+.navbar {
+  justify-content: center;
+  background: linear-gradient(45deg, #007bff, #00c6ff) !important;
+  padding: 15px !important;
+  border-radius: 15px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.navbar-nav .nav-item .btn {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  padding: 10px 20px !important;
+  border: 1px solid white !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+}
+
+.navbar-nav .nav-item .btn:hover {
+  background-color: white !important;
+  color: #007bff !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+.navbar-nav .nav-item .btn i {
+  margin-right: 5px !important;
+}
+
+.navbar-nav .nav-item .btn {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 1.1rem !important;
+}
+
+.text-center img {
+  width: 200px !important;
+  margin-bottom: 10px !important;
+}
+
+.search-btn {
+  padding: 10px 20px !important;
+  background-color: #007bff !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s, transform 0.3s !important;
+  font-weight: bold !important;
+}
+
+.search-btn:hover {
+  background-color: #0056b3 !important;
+  transform: translateY(-2px) !important;
+}
+
+.news-widget {
+  background-color: #f0f0f0 !important;
+  color: black !important;
+  border-radius: 10px !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  padding: 20px !important;
+  min-height: 400px !important;
+}
+
+.news-widget:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.news-widget .read-more-link {
+  align-self: flex-end !important;
+  margin-top: auto !important;
+  color: #007bff !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+  text-align: center !important;
+}
+
+.read-more-link:hover {
+  text-decoration: underline !important;
+}
+
+.news-widget img {
+  border-radius: 5px !important;
+  max-height: 200px !important;
+  object-fit: cover !important;
+}
+
+body {
+  background-color: #2e2e2e !important;
+  color: black !important;
+}
+
+.container {
+  background-color: #2e2e2e !important;
+  padding: 20px !important;
+  border-radius: 10px !important;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: black !important;
+}
+
+input, textarea {
+  background-color: #444 !important;
+  color: white !important;
+  border: 1px solid #555 !important;
+  border-radius: 5px !important;
+  padding: 10px !important;
+}
+
+input::placeholder {
+  color: #999 !important;
+}
+
+input:hover, textarea:hover {
+  border-color: #007bff !important;
+}
+
+input:focus, textarea:focus {
+  outline: none !important;
+  border-color: #0056b3 !important;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5) !important;
+}
+
+h1 {
+  color: white !important;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column !important;
   }
-  
-/* Basic button styling */
-.category-button {
-    border: 1px solid black;
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: white;
-    color: black;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .navbar-nav .nav-item {
+    margin-bottom: 10px !important;
   }
-  
-  /* Selected state styling */
-  .category-button.selected {
-    background-color: #007bff; /* Bootstrap primary color */
-    color: white;
-    border-color: #007bff;
-  }
-  
-  /* Add hover effect for better UX */
-  .category-button:hover {
-    background-color: #f0f0f0;
-  }
-  
-  
-  
-  .save-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .save-button:hover {
-    background-color: #0056b3;
-  }
-  
+}

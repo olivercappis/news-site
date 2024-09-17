@@ -32,3 +32,14 @@ export const GET_NEWS_BY_PREFERENCES = gql`
     }
   }
 `;
+
+export const SEARCH_NEWS = gql`
+  query SearchNews($searchTerm: String!) {
+    searchNews(searchTerm: $searchTerm) {
+      title
+      description
+      url
+      image_url
+    }
+  }
+`;
